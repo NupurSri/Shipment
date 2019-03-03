@@ -1,0 +1,51 @@
+<div class="container-fluid shipment-container">
+  <h1>Shipment Form</h1>
+  <div class="row">
+
+    <div class="col-md-6">
+      <app-package (onPackageAddition)="addPackage($event)" ></app-package>
+    </div>
+    <div class="col-md-6" >
+      <div class="jumbotron">
+        <div *ngIf="shipmentObjArr.length > 0">
+          <table class="table table-bordered">
+            <tr>
+              <th>Package name</th>
+              <th>Weight</th>
+              <th>Value</th>
+            </tr>
+            <tr *ngFor="let shipmentObj of shipmentObjArr">
+              <td>{{shipmentObj.pkgName}}</td>
+              <td>{{shipmentObj.pkgWeight}}</td>
+              <td>{{shipmentObj.currency}} {{shipmentObj.value}}</td>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <button class="btn btn-primary" (click)="sendShipmentDetails()" [ngClass]="{'btn-disable' : shipmentObjArr.length === 0}"
+                  [attr.aria-hidden]="shipmentObjArr.length === 0">Send shipment</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<div class="row shipment-details" *ngIf="shipmentObjArr.length > 0">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <div>
+        Total number of packages : <span> {{totalPackages()}} </span>
+      </div>
+      <div>
+        Total weight : <span> {{totalAcceptableShipmentWeight}} </span>
+      </div>
+      <div>
+        Total value in EUR : <span> {{totalValueinEUR()}} EUR</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+

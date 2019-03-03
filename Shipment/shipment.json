@@ -1,0 +1,152 @@
+{
+  "shipment": [
+    {
+      "id": 1,
+      "packages": [
+        {
+          "name": "Pkg 1",
+          "weight": 1.22,
+          "value": 12.12
+        },
+        {
+          "name": "Pkg 2",
+          "weight": 1.22,
+          "value": 12.12
+        }
+      ]
+    },
+    {
+      "packages": [
+        {
+          "name": "Pkg 1",
+          "weight": 1.22,
+          "value": 12.12
+        },
+        {
+          "name": "Pkg 2",
+          "weight": 1.22,
+          "value": 12.12
+        }
+      ],
+      "id": 2
+    },
+    {
+      "packages": [
+        {
+          "pkgName": "yryt",
+          "pkgWeight": 10,
+          "currency": "GBP",
+          "value": "10"
+        },
+        {
+          "pkgName": "yryt",
+          "pkgWeight": 10,
+          "currency": "GBP",
+          "value": "10"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "packages": [],
+      "id": 4
+    },
+    {
+      "packages": [
+        {
+          "pkgName": "safasd",
+          "pkgWeight": 10,
+          "currency": "GBP",
+          "value": "10.12"
+        },
+        {
+          "pkgName": "safasd",
+          "pkgWeight": 10,
+          "currency": "GBP",
+          "value": "10.12"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "packages": [
+        {
+          "pkgName": "fer",
+          "pkgWeight": 10,
+          "currency": "USD",
+          "value": "12.12"
+        },
+        {
+          "pkgName": "fer",
+          "pkgWeight": 10,
+          "currency": "USD",
+          "value": "12.12"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "packages": [
+        {
+          "pkgName": "erere",
+          "pkgWeight": 10,
+          "currency": "USD",
+          "value": "12"
+        },
+        {
+          "pkgName": "erere",
+          "pkgWeight": 10,
+          "currency": "USD",
+          "value": "12"
+        }
+      ],
+      "id": 7
+    },
+    {
+      "packages": [
+        {
+          "pkgName": "hgfhg",
+          "pkgWeight": 10,
+          "currency": "USD",
+          "value": "45"
+        },
+        {
+          "pkgName": "hgfhg",
+          "pkgWeight": 10,
+          "currency": "USD",
+          "value": "45"
+        },
+        {
+          "pkgName": "hgfhg",
+          "pkgWeight": 5,
+          "currency": "USD",
+          "value": "45"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "packages": [
+        {
+          "pkgName": "fghf",
+          "pkgWeight": 10,
+          "currency": "USD",
+          "value": "12"
+        },
+        {
+          "pkgName": "fghf",
+          "pkgWeight": 10,
+          "currency": "USD",
+          "value": "12"
+        },
+        {
+          "pkgName": "fghf",
+          "pkgWeight": 5,
+          "currency": "USD",
+          "value": "12"
+        }
+      ],
+      "id": 9
+    }
+  ]
+}

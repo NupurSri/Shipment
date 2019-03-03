@@ -1,0 +1,46 @@
+.form-group {
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+  label {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    left: 18px;
+    font-size: 12px;
+    top: 0;
+  }
+  input, select {
+    height: 45px;
+    padding-top: 20px;
+    border-radius: 0;
+    background-color: #f2f2f2;
+    &:focus {
+      border-left: 2px solid #4d148c;
+      outline: none;
+    }
+    &:focus + label {
+      color: #4d148c;
+    }
+  }
+  .ng-dirty, .ng-valid {
+    border-left: 2px solid #08bf8f;
+  }
+  .ng-touched .ng-invalid {
+     border-left: 2px solid #e5213c;
+   }
+  .was-validated .form-control:invalid, .form-control.is-invalid {
+    border-color: white;
+    border-left: 2px solid #e5213c;
+    background-image: none;
+  }
+}
+.pkg-form-button {
+   margin-top: 20px;
+   text-align: center;
+  .btn-submit {
+    margin-right: 25px;
+  }
+ }
