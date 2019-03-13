@@ -3,12 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { ShipmentComponent } from './Shipment/shipment.component';
 import { ShipmentSucessfulComponent } from './ShipmentSuccessful/shipmentSucessful.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'shipment', component: ShipmentComponent
   },
   {
     path: 'shipment/successful', component: ShipmentSucessfulComponent
+  },
+  {
+    path: '*', component: ShipmentComponent
   }
 ];
 

@@ -13,7 +13,7 @@ import { MatOptionModule, MatSelectModule } from '@angular/material';
 import { AppService } from './service/app.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
-import { ShipmentAppState, rootReducer, INITIAL_STATE } from './app-store';
+import {ShipmentAppState, rootReducer, INITIAL_STATE} from './app-store';
 import { AppActions } from './app.action';
 import { ShipmentSucessfulComponent } from './ShipmentSuccessful/shipmentSucessful.component';
 

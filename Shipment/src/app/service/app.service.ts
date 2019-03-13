@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {BehaviorSubject, Observable, throwError} from 'rxjs';
-import {catchError, map} from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
-import {Error} from 'tslint/lib/error';
+import { Package } from '../Package/package';
 
 @Injectable()
 export class AppService {
@@ -14,19 +14,28 @@ export class AppService {
   };
   constructor(@Inject(HttpClient) private http: HttpClient) {
   }
+  // Method to get currency conversion data.
   convertCurrencyParams(): Observable<any> {
     const url = 'http://localhost:3000/data';
     return this.http.get(url).pipe(map((res: Response) => {
       return res;
-    }), );
+    }), catchError ((error: HttpErrorResponse) => {
+      console.log(error);
+      return throwError(error);
+    }));
   }
-  sendShipment(obj): Observable<any> {
-    console.log('sendShipment called');
+  // Method to post shipment obj.
+  sendShipment(pkgArr: Package[]): Observable<any> {
     const url = 'http://localhost:12345/shipment';
     const pkgObj = {
-      "packages": obj
+      "packages": pkgArr
     }
     return this.http.post<any>(url, pkgObj, this.httpOptions)
-      .pipe();
+      .pipe(map((res: Response) => {
+        return res;
+    }), catchError ((error: HttpErrorResponse) => {
+        console.log(error);
+        return throwError(error);
+      }));
   }
 }

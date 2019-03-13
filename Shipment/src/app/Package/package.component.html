@@ -1,60 +1,60 @@
 <div class="jumbotron">
   <div class="container">
-    {{wholeShipmentWeight}}
     <div class="row">
       <div class="col-sm-10 col-sm-10">
-        <h3>Enter Package Details</h3>
+        <h2>Enter Package Details </h2><small>(All fields are required)</small>
         <form [formGroup]="pkgForm" (ngSubmit)="onSubmit()">
 
-
-
-          <div class="form-group">
-
-            <input type="text" id="pkgName" formControlName="pkgName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pkgName.errors }" maxlength="32">
+          <div class="form-group fdx-package-form">
+            <input type="text" id="pkgName" formControlName="pkgName" class="form-control" [ngClass]="{ 'is-invalid': form.pkgName.errors && (form.pkgName.touched) }">
             <label for="pkgName">Package Name</label>
-            <div *ngIf="submitted && f.pkgName.errors" class="invalid-feedback">
-              <div aria-live="assertive" *ngIf="f.pkgName.errors.required">Package Name is required</div>
-              <div aria-live="assertive" *ngIf="f.pkgName.errors.pattern">Package name should only have characters</div>
+            <div *ngIf="form.pkgName.errors" class="invalid-feedback">
+              <div aria-live="assertive" *ngIf="form.pkgName.touched && form.pkgName.errors.required">Package Name is required</div>
+              <div aria-live="assertive" *ngIf="form.pkgName.errors.pattern">Package name should only have characters (A-z, 0-9, #)</div>
+              <div aria-live="assertive" *ngIf="form.pkgName.errors.maxlength">Package name can have maximum 32 characters</div>
             </div>
           </div>
-          <div class="form-group">
 
-             <input type="number" id="weight" placeholder="" formControlName="pkgWeight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pkgWeight.errors }"
-             aria-label="Weight in kilograms"/>
+          <div class="form-group fdx-package-form">
+            <input type="number" id="weight" placeholder="" formControlName="pkgWeight" class="form-control" [ngClass]="{ 'is-invalid': form.pkgWeight.errors && (form.pkgWeight.touched) }"
+             aria-label="Weight in kilograms" />
              <label for="weight">Weight (in Kgs)</label>
-             <div *ngIf="submitted && f.pkgWeight.errors" class="invalid-feedback">
-               <div aria-live="assertive" *ngIf="f.pkgWeight.errors.required">Weight is required</div>
-               <div aria-live="assertive" *ngIf="f.pkgWeight.errors.min">Weight cannot be zero</div>
-               <div aria-live="assertive" *ngIf="f.pkgWeight.errors.max">Max limit is 10kgs</div>
-               <div aria-live="assertive" *ngIf="f.pkgWeight.errors.pattern">Enter number upto 3 decimal places</div>
-               <div aria-live="assertive" *ngIf="f.pkgWeight.errors.weightLimit">Total weight limit for a shipment is 25kgs</div>
+             <div *ngIf="form.pkgWeight.errors" class="invalid-feedback">
+               <div aria-live="assertive" *ngIf="form.pkgWeight.touched && form.pkgWeight.errors.required">Weight is required</div>
+               <div aria-live="assertive" *ngIf="form.pkgWeight.errors.min">Weight cannot be zero</div>
+               <div aria-live="assertive" *ngIf="form.pkgWeight.errors.max">Max limit is 10kgs</div>
+               <div aria-live="assertive" *ngIf="form.pkgWeight.errors.pattern">Enter number upto 3 decimal places</div>
+               <div aria-live="assertive" *ngIf="form.pkgWeight.errors.weightLimit">Total weight limit for a shipment is 25kgs</div>
              </div>
            </div>
 
-              <div class="form-group">
-
-                  <label for="currency">Currency</label>
-                  <select id="currency" formControlName="currency" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.currency.errors }">
-                    <option value="EUR" selected>EUR</option>
-                    <option value="USD">USD</option>
-                    <option value="GBP">GBP</option>
-                  </select>
-                  <div *ngIf="submitted && f.currency.errors" class="invalid-feedback">
-                    <div aria-live="assertive" *ngIf="f.currency.errors.required">currency is required</div>
-                  </div>
+          <div class="form-group fdx-package-form">
+            <!-- Get option values from array from component-->
+              <label for="currency">Currency</label>
+              <select id="currency" formControlName="currency" class="form-control" [ngClass]="{ 'is-invalid': form.currency.errors && (form.currency.touched) }">
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+              </select>
+              <div *ngIf="form.currency.errors" class="invalid-feedback">
+                <div aria-live="assertive" *ngIf="form.currency.touched && form.currency.errors.required">Currency is required</div>
               </div>
-                <div class="form-group">
-                  <input id="value" type="text" formControlName="value" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.value.errors }" />
-                  <label for="value">Value</label>
-                  <div *ngIf="submitted && f.value.errors" class="invalid-feedback">
-                    <div aria-live="assertive" *ngIf="f.value.errors.required">value is required</div>
-                    <div aria-live="assertive" *ngIf="f.value.errors.pattern">Enter number upto 2 decimal places</div>
-                  </div>
-                </div>
-          <div class="form-group pkg-form-button">
-            <button class="btn btn-primary btn-submit" type="submit" aria-label="Add package">ADD PACKAGE</button>
+          </div>
+
+          <div class="form-group fdx-package-form">
+            <input id="value" type="number" formControlName="pkgValue" class="form-control" [ngClass]="{ 'is-invalid': form.pkgValue.errors && (form.pkgValue.touched) }" />
+            <label for="value">Value</label>
+            <div *ngIf="form.pkgValue.errors" class="invalid-feedback">
+              <div aria-live="assertive" *ngIf="form.pkgValue.touched && form.pkgValue.errors.required">Value is required</div>
+              <div aria-live="assertive" *ngIf="form.pkgValue.errors.pattern">Enter number upto 2 decimal places</div>
+            </div>
+          </div>
+
+          <div class="form-group fdx-package-form pkg-form-button">
+            <button class="btn btn-primary btn-submit" type="submit" aria-label="Add package" [disabled]="pkgForm.invalid">ADD PACKAGE</button>
             <button class="btn btn-primary" type="reset" arai-label="reset">RESET</button>
           </div>
+
         </form>
       </div>
     </div>

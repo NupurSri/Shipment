@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private router: Router) {
+    this.navigate();
+  }
+  // Method to navigate to Shipment component.
+  navigate = () => {
     this.router.navigate(['shipment']);
   }
 }

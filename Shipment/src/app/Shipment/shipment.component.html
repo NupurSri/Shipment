@@ -1,13 +1,16 @@
 <div class="container-fluid shipment-container">
   <h1>Shipment Form</h1>
+  <div *ngIf="maxPackageLimitReached" class="shipment-max-limit" aria-live="assertive">
+    Maximum package limit is 5!!!
+  </div>
   <div class="row">
-
     <div class="col-md-6">
-      <app-package (onPackageAddition)="addPackage($event)" ></app-package>
+      <app-package (onPackageAddition)="addPackage($event)" [resetForm]="resetPackageForm"></app-package>
     </div>
-    <div class="col-md-6" >
+    <div class="col-md-6" *ngIf="shipmentObjArr.length > 0">
       <div class="jumbotron">
-        <div *ngIf="shipmentObjArr.length > 0">
+        <div>
+        <h2>Shipment Details</h2>
           <table class="table table-bordered">
             <tr>
               <th>Package name</th>
@@ -15,37 +18,38 @@
               <th>Value</th>
             </tr>
             <tr *ngFor="let shipmentObj of shipmentObjArr">
-              <td>{{shipmentObj.pkgName}}</td>
-              <td>{{shipmentObj.pkgWeight}}</td>
-              <td>{{shipmentObj.currency}} {{shipmentObj.value}}</td>
+              <td>{{shipmentObj.getPackageName()}}</td>
+              <td>{{shipmentObj.getPackageWeight()}}</td>
+              <td>{{shipmentObj.getCurrency()}} {{shipmentObj.getPackageValue()}}</td>
             </tr>
           </table>
         </div>
-        <div>
-          <button class="btn btn-primary" (click)="sendShipmentDetails()" [ngClass]="{'btn-disable' : shipmentObjArr.length === 0}"
-                  [attr.aria-hidden]="shipmentObjArr.length === 0">Send shipment</button>
-        </div>
       </div>
-
     </div>
   </div>
-<div class="row shipment-details" *ngIf="shipmentObjArr.length > 0">
+<div class="row shipment-details">
   <div class="col-md-6">
     <div class="jumbotron">
-      <div>
-        Total number of packages : <span> {{totalPackages()}} </span>
+      <div *ngIf="shipmentObjArr.length > 0" class="shipment-summary">
+        <h3>Shipment Summary</h3>
+        <div>
+          Total number of packages : <span> {{totalPackages()}} </span>
+        </div>
+        <div>
+          Total weight (in Kgs) : <span> {{(totalAcceptableShipmentWeight).toFixed(3)}} </span>
+        </div>
+        <div>
+          Total value : <span> EUR {{totalShipmentValueinEUR()}}</span>
+        </div>
       </div>
       <div>
-        Total weight : <span> {{totalAcceptableShipmentWeight}} </span>
-      </div>
-      <div>
-        Total value in EUR : <span> {{totalValueinEUR()}} EUR</span>
+        <button class="btn btn-primary shipment-submit" (click)="sendShipmentDetails()" [disabled]="isValidShipment()">Send shipment</button>
+        <button class="btn btn-primary shipment-reset" (click)="resetShipmentDetails()" [disabled]="isValidShipment()">Reset shipment</button>
       </div>
     </div>
-
   </div>
-
 </div>
+
 </div>
 
 

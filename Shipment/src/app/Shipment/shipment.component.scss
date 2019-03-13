@@ -6,5 +6,22 @@
     div {
       display: block;
     }
+    .shipment-summary {
+      margin-bottom: 20px;
+    }
+    .shipment-submit {
+      margin-right: 25px;
+    }
   }
+.shipment-max-limit {
+  width: 100%;
+  height: 37px;
+  border: 1px solid red;
+  padding: 5px;
+  color: red;
+  text-align: center;
+  background-color: #ffeef1;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
 }

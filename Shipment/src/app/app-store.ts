@@ -1,31 +1,21 @@
 import { AppActions } from './app.action';
 
-export interface MeasureWeightStoreObj {
-  totalWeight: number;
-  acceptableWeight: number;
-  lastWeightAdded: number;
-}
-
-export const MEASURE_WEIGHT_INITIAL_STATE: MeasureWeightStoreObj = {
-  totalWeight: 0,
-  acceptableWeight: 0,
-  lastWeightAdded: 0
-};
+// Interface for ShipmentWeight
 export interface ShipmentAppState {
-  weightObj: MeasureWeightStoreObj;
+  shipmentWeight: number;
 }
 
+// Initializing interface.
 export const INITIAL_STATE: ShipmentAppState = {
-  weightObj: MEASURE_WEIGHT_INITIAL_STATE
+  shipmentWeight: 0.000
 };
 
-
-
+// Reducer method.
 export function rootReducer(lastState: ShipmentAppState, action): ShipmentAppState {
-  const obj: ShipmentAppState = { weightObj: lastState.weightObj };
+  const obj: ShipmentAppState = { shipmentWeight: lastState.shipmentWeight };
   switch (action.type) {
     case AppActions.MAX_WEIGHT_LIMIT_REACHED :
-      obj.weightObj = action.data;
+      obj.shipmentWeight = action.data;
       return obj;
     default:
       return obj;
